@@ -23,9 +23,9 @@ const App = () => {
     return (
         <div>
         <Otsikko otsake={kurssi.nimi}/>
-        <p>Osa 1: <Sisalto  nimi={kurssi.osat[0].nimi} tehtavia={kurssi.osat[0].tehtavia}/></p>
-        <p>Osa 2: <Sisalto  nimi={kurssi.osat[1].nimi} tehtavia={kurssi.osat[1].tehtavia}/></p>
-        <p>Osa 3: <Sisalto  nimi={kurssi.osat[2].nimi} tehtavia={kurssi.osat[2].tehtavia}/></p>
+        <Sisalto  nimi={kurssi.osat[0].nimi} tehtavia={kurssi.osat[0].tehtavia} osa={1}/>
+        <Sisalto  nimi={kurssi.osat[1].nimi} tehtavia={kurssi.osat[1].tehtavia} osa={2}/>
+        <Sisalto  nimi={kurssi.osat[2].nimi} tehtavia={kurssi.osat[2].tehtavia} osa={3}/>
         <Yhteensa maara={kurssi}/>
         </div>
     )
@@ -33,7 +33,7 @@ const App = () => {
 
 const Sisalto = (kurssi)=>{
     return ( 
-            <p> {kurssi.nimi}, tehtäviä {kurssi.tehtavia}</p>
+            <p>Osa {kurssi.osa}: {kurssi.nimi}, tehtäviä {kurssi.tehtavia}</p>
     )
 }
 

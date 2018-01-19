@@ -15,11 +15,13 @@ const Statistics=(props)=>{
         <div>
             <h3> Statistiikka </h3>
             <table>
+            <tbody>
            <Statistic stat={props.stat.hyvä} nimi="Hyvä"/>
            <Statistic stat={props.stat.neutraali} nimi="Neutraali"/>
            <Statistic stat={props.stat.huono} nimi="Huono"/>
            <Statistic stat={keskiarvo(hyvia,neutraaleja,huonoja,yhteensa)} nimi="Keskiarvo"/>
            <Statistic stat={positiivisia(hyvia,yhteensa)}nimi="Positiivisia"/>
+           </tbody>
            </table>
         </div>
     )
