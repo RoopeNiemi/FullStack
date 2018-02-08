@@ -28,11 +28,11 @@ class App extends React.Component {
   deletePerson=(event)=>{
     console.log(event.target.value)
     const id=event.target.value
-    const name=this.findPerson(Number(event.target.value))
+    const name=this.findPerson(event.target.value)
     personService.deletePerson(event.target.value)
     personService.getAll()
       .then(response => {
-        this.setState({ persons: this.state.persons.filter(n=> Number(n.id)!==Number(id)) })
+        this.setState({ persons: this.state.persons.filter(n=> n.id!==id) })
         this.setState({message: 'Deleted contact '+name.name})
       })
       setTimeout(()=>{
@@ -43,7 +43,7 @@ class App extends React.Component {
   update=(person,id)=>{
     personService.update(id, person)
     .then(person =>{
-      const persons = this.state.persons.filter(n=> Number(n.id)!== Number(id))
+      const persons = this.state.persons.filter(n=> n.id!== id)
       this.setState({
         persons: persons.concat(person),
         message: 'Changed contact '+person.name+" 's number."
@@ -51,7 +51,7 @@ class App extends React.Component {
     })
     .catch(error=>{
       alert('The contact '+person.name+' has already been deleted from the server.')
-      this.setState({persons: this.state.persons.filter(n=> Number(n.id)!==id)})
+      this.setState({persons: this.state.persons.filter(n=> n.id!==id)})
     })
 
     setTimeout(()=>{
@@ -99,7 +99,7 @@ class App extends React.Component {
   }
 
   confirmDelete=(event)=>{
-    const name=this.findPerson(Number(event.target.value))
+    const name=this.findPerson(event.target.value)
     const result=window.confirm('Delete contact '+name.name+'?')
     if(result){
       this.deletePerson(event,name)
@@ -107,7 +107,7 @@ class App extends React.Component {
   }
 
   findPerson=(id)=>{
-    const person=this.state.persons.find(n=> Number(n.id)===Number(id))
+    const person=this.state.persons.find(n=> n.id===id)
     return person
   }
 
